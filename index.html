@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فك التشفير | Deobfuscator Pro</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-family-elegant-icons/1.0.0/ElegantIcons.min.css">
+    <title>فك التشفير | BOKA NETWORK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap');
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Cairo', sans-serif;
-            scroll-behavior: smooth;
+            user-select: none;
         }
 
         body {
-            background: #050505;
+            background-color: #050505;
             color: #ffffff;
             overflow-x: hidden;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative;
@@ -31,42 +30,42 @@
         body::before {
             content: '';
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, rgba(0,0,0,0) 70%);
-            top: -10%;
-            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, rgba(0,0,0,0) 70%);
+            top: 10%;
+            left: 10%;
             z-index: 0;
         }
 
         body::after {
             content: '';
             position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, rgba(0,0,0,0) 70%);
-            bottom: -20%;
-            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, rgba(0,0,0,0) 70%);
+            bottom: 10%;
+            right: 5%;
             z-index: 0;
         }
 
         .container {
             width: 90%;
-            max-width: 850px;
+            max-width: 750px;
             background: rgba(10, 10, 10, 0.8);
-            border: 2px solid #d4af37;
+            border: 2px solid #ffd700;
             border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 0 35px rgba(212, 175, 55, 0.15), inset 0 0 15px rgba(212, 175, 55, 0.05);
-            backdrop-filter: blur(10px);
-            z-index: 1;
+            padding: 40px 30px;
+            box-shadow: 0 0 35px rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(12px);
             position: relative;
-            animation: fadeIn 1s ease-in-out;
+            z-index: 10;
+            animation: glowPulse 4s infinite alternate;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.15); border-color: #ffd700; }
+            100% { box-shadow: 0 0 45px rgba(255, 215, 0, 0.35); border-color: #ffea75; }
         }
 
         .header {
@@ -77,18 +76,18 @@
         .header h1 {
             font-size: 2.8rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #ffffff 0%, #d4af37 50%, #aa7c11 100%);
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ffffff 30%, #ffd700 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+            text-shadow: 0 4px 20px rgba(255, 215, 0, 0.1);
+            margin-bottom: 5px;
         }
 
         .header p {
-            color: #888;
-            font-size: 1rem;
-            font-weight: 300;
+            color: #8c8c8c;
+            font-size: 0.95rem;
+            font-weight: 400;
         }
 
         .input-group {
@@ -98,48 +97,51 @@
 
         .input-group input {
             width: 100%;
-            padding: 18px 25px;
+            padding: 16px 50px 16px 20px;
             background: rgba(20, 20, 20, 0.9);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid #333;
             border-radius: 10px;
             color: #fff;
-            font-size: 1.05rem;
-            transition: all 0.4s ease;
+            font-size: 1rem;
             outline: none;
+            transition: all 0.3s ease;
             text-align: left;
             direction: ltr;
         }
 
         .input-group input:focus {
-            border-color: #d4af37;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+            border-color: #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
             background: rgba(25, 25, 25, 1);
         }
 
-        .input-group input::placeholder {
-            text-align: right;
-            color: #555;
-            font-size: 0.95rem;
+        .input-group i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffd700;
+            font-size: 1.2rem;
         }
 
         .btn-action {
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+            padding: 15px;
+            background: linear-gradient(135deg, #ffd700 0%, #b39700 100%);
             border: none;
             border-radius: 10px;
             color: #000;
+            font-size: 1.1rem;
             font-weight: 700;
-            font-size: 1.2rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
         }
 
         .btn-action:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
-            background: linear-gradient(135deg, #ffe07d 0%, #d4af37 100%);
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, #ffea75 0%, #ffd700 100%);
         }
 
         .btn-action:active {
@@ -149,121 +151,102 @@
         .loading-box {
             display: none;
             text-align: center;
-            margin-top: 30px;
+            margin: 30px 0;
         }
 
         .loading-text {
-            color: #d4af37;
-            font-size: 1.1rem;
+            color: #ffd700;
+            font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 15px;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
+            letter-spacing: 1px;
         }
 
         .spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid rgba(212, 175, 55, 0.1);
+            width: 45px;
+            height: 45px;
+            border: 3px solid rgba(255, 215, 0, 0.1);
             border-radius: 50%;
-            border-top-color: #d4af37;
-            display: inline-block;
-            animation: spin 1s linear infinite;
+            border-top-color: #ffd700;
+            margin: 0 auto;
+            animation: spin 0.8s linear infinite;
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to { transform: rotate(300deg); }
         }
 
         .result-box {
             display: none;
-            margin-top: 35px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            padding-top: 30px;
-            animation: fadeIn 0.6s ease;
-        }
-
-        .result-title {
-            font-size: 1.2rem;
-            color: #d4af37;
-            margin-bottom: 15px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .code-container {
-            position: relative;
-            background: #020202;
+            margin-top: 30px;
+            background: #0d0d0d;
             border: 1px solid #222;
-            border-radius: 8px;
-            overflow: hidden;
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
         }
 
-        .code-header {
-            background: #0f0f0f;
-            padding: 10px 20px;
+        .result-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #1c1c1c;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 10px;
         }
 
-        .lang-badge {
-            font-size: 0.8rem;
-            background: rgba(212, 175, 55, 0.1);
-            color: #d4af37;
-            padding: 2px 8px;
-            border-radius: 4px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            font-family: monospace;
+        .result-title {
+            color: #ffd700;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .btn-copy {
-            background: none;
-            border: 1px solid #333;
-            color: #aaa;
-            padding: 4px 12px;
-            border-radius: 4px;
-            cursor: pointer;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #ffd700;
+            padding: 6px 14px;
+            border-radius: 6px;
             font-size: 0.85rem;
-            transition: all 0.2s;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .btn-copy:hover {
-            background: #d4af37;
+            background: #ffd700;
             color: #000;
-            border-color: #d4af37;
         }
 
-        pre {
-            margin: 0;
-            padding: 20px;
-            overflow-x: auto;
-            max-height: 350px;
-            text-align: left;
-            direction: ltr;
-        }
-
-        code {
-            font-family: 'Consolas', 'Courier New', Courier, monospace;
+        .code-area {
+            width: 100%;
+            height: 250px;
+            background: #070707;
+            border: 1px solid #151515;
+            border-radius: 8px;
             color: #a6e22e;
+            font-family: 'Courier New', Courier, monospace;
             font-size: 0.95rem;
-            line-height: 1.5;
+            padding: 15px;
+            resize: none;
+            outline: none;
+            direction: ltr;
+            text-align: left;
+            user-select: text;
         }
 
-        .error-message {
-            color: #ff4a4a;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.95rem;
-            display: none;
+        .watermark {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            color: #333;
+            letter-spacing: 2px;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -272,75 +255,86 @@
     <div class="container">
         <div class="header">
             <h1>فك التشفير</h1>
-            <p>المحرر الاحترافي لفك تشفير روابط Luau & Lua واستخراج السكربتات البرمجية الفخمة</p>
+            <p>BOKA NETWORK • LUAU & LUA EXTRACTOR</p>
         </div>
 
-        <div class="input-group">
-            <input type="text" id="urlInput" placeholder="أدخل الرابط المشفر هنا واضغط فك التشفير...">
+        <div id="main-panel">
+            <div class="input-group">
+                <input type="text" id="target-url" placeholder="https://example.com/script-link" autocomplete="off">
+                <i class="fa-solid fa-link"></i>
+            </div>
+            <button class="btn-action" onclick="processExtraction()">بدء فك التشفير واستخراج السكربت</button>
         </div>
 
-        <button class="btn-action" onclick="processDeobfuscation()">بدء فك التشفير الـخـرافـي</button>
-
-        <div class="error-message" id="errorMsg">عذراً، الرابط غير صالح أو لا يحتوي على كود Luau / Lua مدعوم!</div>
-
-        <div class="loading-box" id="loadingBox">
-            <div class="loading-text">انتظر شوي... جاري تحليل وفك تشفير الرابط بدقة عالية</div>
+        <div class="loading-box" id="loader">
+            <p class="loading-text">انتظر شوي…</p>
             <div class="spinner"></div>
         </div>
 
-        <div class="result-box" id="resultBox">
-            <div class="result-title">
-                <span>✦ السكربت المستخرج بنجاح (Raw):</span>
-            </div>
-            <div class="code-container">
-                <div class="code-header">
-                    <span class="lang-badge">Luau / Lua</span>
-                    <button class="btn-copy" onclick="copyCode()">نسخ السكربت</button>
+        <div class="result-box" id="result-panel">
+            <div class="result-header">
+                <div class="result-title">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Luau / Lua Script Source</span>
                 </div>
-                <pre><code id="codeOutput"></code></pre>
+                <button class="btn-copy" onclick="copyScriptCode()">نسخ السكربت</button>
             </div>
+            <textarea class="code-area" id="code-output" readonly></textarea>
         </div>
+
+        <div class="watermark">BY BOKA ARABIC</div>
     </div>
 
     <script>
-        function processDeobfuscation() {
-            const urlInput = document.getElementById('urlInput').value.trim();
-            const loadingBox = document.getElementById('loadingBox');
-            const resultBox = document.getElementById('resultBox');
-            const errorMsg = document.getElementById('errorMsg');
-            const codeOutput = document.getElementById('codeOutput');
-
+        function processExtraction() {
+            const urlInput = document.getElementById('target-url').value.trim();
             if (!urlInput) return;
 
-            resultBox.style.display = 'none';
-            errorMsg.style.display = 'none';
-            loadingBox.style.display = 'block';
+            document.getElementById('main-panel').style.display = 'none';
+            document.getElementById('result-panel').style.display = 'none';
+            document.getElementById('loader').style.display = 'block';
+
+            let targetFetchUrl = urlInput;
+            if (urlInput.includes('github.com') && !urlInput.includes('raw.githubusercontent.com')) {
+                targetFetchUrl = urlInput.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+            } else if (urlInput.includes('pastebin.com') && !urlInput.includes('/raw/')) {
+                targetFetchUrl = urlInput.replace('pastebin.com/', 'pastebin.com/raw/');
+            }
 
             setTimeout(() => {
-                loadingBox.style.display = 'none';
-
-                if (urlInput.includes('github') || urlInput.includes('pastebin') || urlInput.includes('loadstring') || urlInput.includes('http')) {
-                    
-                    const extractedScript = `-- [ Scripthub Deobfuscated Content ]\n\nlocal BokaHub = {\n    Version = "V31",\n    Theme = "DarkGold",\n    Title = "سكربت مبارك",\n    Developer = "ByBokaArabic"\n}\n\nprint("BOKA NETWORK Loaded Successfully")\n\ntask.spawn(function()\n    while true do\n        task.wait(1)\n        -- Realtime Lightning Logic Executed\n    end\nend)`;
-                    
-                    codeOutput.textContent = extractedScript;
-                    resultBox.style.display = 'block';
-                } else {
-                    errorMsg.style.display = 'block';
-                }
+                fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(targetFetchUrl)}`)
+                    .then(response => {
+                        if (response.ok) return response.json();
+                        throw new Error('Network response error');
+                    })
+                    .then(data => {
+                        document.getElementById('loader').style.display = 'none';
+                        document.getElementById('result-panel').style.display = 'block';
+                        document.getElementById('main-panel').style.display = 'block';
+                        document.getElementById('code-output').value = data.contents;
+                    })
+                    .catch(err => {
+                        document.getElementById('loader').style.display = 'none';
+                        document.getElementById('result-panel').style.display = 'block';
+                        document.getElementById('main-panel').style.display = 'block';
+                        document.getElementById('code-output').value = `-- فشل جلب البيانات تلقائياً.\n-- الرابط المباشر (Raw):\n-- ${targetFetchUrl}`;
+                    });
             }, 2500);
         }
 
-        function copyCode() {
-            const codeText = document.getElementById('codeOutput').textContent;
-            navigator.clipboard.writeText(codeText).then(() => {
-                const copyBtn = document.querySelector('.btn-copy');
-                copyBtn.textContent = 'تم النسخ!';
-                setTimeout(() => {
-                    copyBtn.textContent = 'نسخ السكربت';
-                }, 2000);
-            });
+        function copyScriptCode() {
+            const codeArea = document.getElementById('code-output');
+            codeArea.select();
+            codeArea.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            
+            const copyBtn = document.querySelector('.btn-copy');
+            copyBtn.innerText = 'تم النسخ بنجاح';
+            setTimeout(() => {
+                copyBtn.innerText = 'نسخ السكربت';
+            }, 2000);
         }
     </script>
+
 </body>
 </html>
