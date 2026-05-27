@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فك التشفير | BOKA NETWORK</title>
+    <title>يستخرج لك السكربت الي داخل الرابط</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap');
@@ -254,16 +254,16 @@
 
     <div class="container">
         <div class="header">
-            <h1>فك التشفير</h1>
-            <p>BOKA NETWORK • LUAU & LUA EXTRACTOR</p>
+            <h1>قوي جداّ</h1>
+            <p>LUAU & LUA</p>
         </div>
 
         <div id="main-panel">
             <div class="input-group">
-                <input type="text" id="target-url" placeholder="https://example.com/script-link" autocomplete="off">
+                <input type="text" id="target-url" placeholder="حط الرابط هنا..." autocomplete="off">
                 <i class="fa-solid fa-link"></i>
             </div>
-            <button class="btn-action" onclick="processExtraction()">بدء فك التشفير واستخراج السكربت</button>
+            <button class="btn-action" onclick="processExtraction()">بدء فك الرابط واستخراج السكربت</button>
         </div>
 
         <div class="loading-box" id="loader">
@@ -282,7 +282,7 @@
             <textarea class="code-area" id="code-output" readonly></textarea>
         </div>
 
-        <div class="watermark">BY BOKA ARABIC</div>
+        <div class="watermark">من صنع مبارك</div>
     </div>
 
     <script>
@@ -329,7 +329,7 @@
             document.execCommand('copy');
             
             const copyBtn = document.querySelector('.btn-copy');
-            copyBtn.innerText = 'تم النسخ بنجاح';
+            copyBtn.innerText = 'تم النسخ الرابط';
             setTimeout(() => {
                 copyBtn.innerText = 'نسخ السكربت';
             }, 2000);
