@@ -1,259 +1,375 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>فك الروابط</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فك الروابط</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Tahoma,sans-serif;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            user-select: none;
+        }
 
-body{
-    min-height:100vh;
-    background:linear-gradient(-45deg,#6a00ff,#ff00c8,#7b2cff,#ff4fd8);
-    background-size:400% 400%;
-    animation:bg 10s ease infinite;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-}
+        body {
+            background: linear-gradient(135deg, #120024 0%, #1a0033 50%, #2a003d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-x: hidden;
+            padding: 40px 20px;
+        }
 
-@keyframes bg{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-}
+        body::-webkit-scrollbar {
+            width: 0px;
+        }
 
-.box{
-    width:90%;
-    max-width:950px;
-    background:rgba(20,20,20,.65);
-    border:1px solid rgba(255,255,255,.1);
-    backdrop-filter:blur(15px);
-    border-radius:30px;
-    padding:35px;
-    box-shadow:
-    0 0 40px rgba(255,0,200,.3),
-    0 0 80px rgba(106,0,255,.3);
-    animation:show 1s ease;
-}
+        .background-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(162, 0, 255, 0.15) 0%, rgba(255, 0, 128, 0.05) 100%);
+            filter: blur(80px);
+            z-index: -1;
+            pointer-events: none;
+        }
 
-@keyframes show{
-    from{
-        transform:translateY(30px);
-        opacity:0;
-    }
-    to{
-        transform:translateY(0);
-        opacity:1;
-    }
-}
+        .main-container {
+            width: 100%;
+            max-width: 850px;
+            background: rgba(15, 5, 25, 0.7);
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #8a2be2, #ff007f) 1;
+            box-shadow: 0 0 35px rgba(138, 43, 226, 0.3);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 50px;
+        }
 
-.logo{
-    text-align:center;
-    margin-bottom:30px;
-}
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #b046ff, #ff4fa8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 79, 168, 0.2);
+            letter-spacing: 1px;
+        }
 
-.logo h1{
-    font-size:55px;
-    color:white;
-    text-shadow:0 0 25px #ff00d9;
-}
+        .input-group {
+            position: relative;
+            width: 100%;
+            margin-bottom: 25px;
+        }
 
-.logo p{
-    margin-top:10px;
-    color:#ddd;
-    font-size:18px;
-}
+        input[type="text"] {
+            width: 100%;
+            padding: 18px 25px;
+            background: rgba(20, 10, 30, 0.9);
+            border: 2px solid #5a189a;
+            outline: none;
+            color: #fff;
+            font-size: 1.1rem;
+            text-align: left;
+            direction: ltr;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+        }
 
-.inputBox{
-    position:relative;
-    margin-bottom:25px;
-}
+        input[type="text"]:focus {
+            border-color: #ff007f;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4), inset 0 0 10px rgba(0,0,0,0.5);
+        }
 
-input{
-    width:100%;
-    padding:20px;
-    border:none;
-    outline:none;
-    border-radius:18px;
-    background:rgba(255,255,255,.08);
-    color:white;
-    font-size:17px;
-    transition:.3s;
-}
+        input[type="text"]::placeholder {
+            text-align: right;
+            direction: rtl;
+            color: #a080b0;
+            font-weight: 400;
+        }
 
-input::placeholder{
-    color:#ccc;
-}
+        .btn-action {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(45deg, #6a0dad, #d1006c);
+            background-size: 200% 200%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(106, 13, 173, 0.4);
+            transition: all 0.4s ease;
+            animation: gradientShift 4s ease infinite;
+        }
 
-input:focus{
-    box-shadow:0 0 25px #ff00d9;
-    transform:scale(1.01);
-}
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-button{
-    width:100%;
-    padding:18px;
-    border:none;
-    border-radius:18px;
-    background:linear-gradient(90deg,#7b2cff,#ff00c8);
-    color:white;
-    font-size:20px;
-    cursor:pointer;
-    transition:.3s;
-    font-weight:bold;
-}
+        .btn-action:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(209, 0, 108, 0.6);
+            letter-spacing: 1px;
+        }
 
-button:hover{
-    transform:scale(1.02);
-    box-shadow:0 0 30px #ff00d9;
-}
+        .btn-action:active {
+            transform: translateY(1px);
+        }
 
-.loading{
-    display:none;
-    margin-top:25px;
-    text-align:center;
-    color:white;
-    font-size:20px;
-}
+        .status-msg {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 25px;
+            min-height: 35px;
+            color: #ff4fa8;
+            display: none;
+        }
 
-.result{
-    display:none;
-    margin-top:25px;
-}
+        .output-box {
+            margin-top: 35px;
+            width: 100%;
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
 
-textarea{
-    width:100%;
-    height:320px;
-    border:none;
-    outline:none;
-    resize:none;
-    border-radius:20px;
-    padding:20px;
-    background:#111;
-    color:#fff;
-    font-size:15px;
-    line-height:1.8;
-}
+        .output-box.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-.copyBtn{
-    margin-top:15px;
-}
+        .code-container {
+            width: 100%;
+            max-height: 400px;
+            overflow-y: auto;
+            background: #09020f;
+            border: 1px solid #ff007f;
+            padding: 20px;
+            text-align: left;
+            direction: ltr;
+            margin-bottom: 20px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+        }
 
-.footer{
-    text-align:center;
-    color:#bbb;
-    margin-top:25px;
-    font-size:14px;
-}
-</style>
+        .code-container pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .code-container code {
+            font-family: 'Consolas', 'Courier New', monospace;
+            color: #00ffcc;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .btn-copy {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(45deg, #d1006c, #6a0dad);
+            background-size: 200% 200%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(209, 0, 108, 0.4);
+            transition: all 0.4s ease;
+            animation: gradientShift 4s ease infinite;
+            margin-top: 10px;
+        }
+
+        .btn-copy:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6);
+        }
+
+        .ladder-control {
+            position: fixed;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            background: rgba(20, 5, 30, 0.8);
+            border: 2px solid #6a0dad;
+            padding: 10px 5px;
+            box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
+            z-index: 999;
+        }
+
+        .ladder-step {
+            width: 24px;
+            height: 4px;
+            background: linear-gradient(90deg, #6a0dad, #ff007f);
+            border-radius: 2px;
+        }
+
+        .ladder-btn {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(45deg, #6a0dad, #d1006c);
+            border: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .ladder-btn:hover {
+            background: linear-gradient(45deg, #ff007f, #6a0dad);
+            box-shadow: 0 0 10px #ff007f;
+        }
+
+        .ladder-btn.up-btn { margin-bottom: 5px; }
+        .ladder-btn.down-btn { margin-top: 5px; }
+    </style>
 </head>
-
 <body>
 
-<div class="box">
+    <div class="background-glow"></div>
 
-    <div class="logo">
+    <div class="ladder-control">
+        <button class="ladder-btn up-btn" onclick="climbUp()">▲</button>
+        <div class="ladder-step"></div>
+        <div class="ladder-step"></div>
+        <div class="ladder-step"></div>
+        <div class="ladder-step"></div>
+        <div class="ladder-step"></div>
+        <button class="ladder-btn down-btn" onclick="climbDown()">▼</button>
+    </div>
+
+    <div class="main-container">
         <h1>فك الروابط</h1>
-        <p>حط الرابط ويفك لك الرابط ويستخرج لك السكربت</p>
-    </div>
-
-    <div class="inputBox">
-        <input 
-        type="text" 
-        id="urlInput" 
-        placeholder="حط الرابط هنا..." />
-    </div>
-
-    <button onclick="fetchScript()">
-        فك الرابط
-    </button>
-
-    <div class="loading" id="loading">
-        انتظر شوي...
-    </div>
-
-    <div class="result" id="resultBox">
-
-        <textarea id="output"></textarea>
-
-        <button class="copyBtn" onclick="copyText()">
-            نسخ السكربت
-        </button>
-
-    </div>
-
-    <div class="footer">
-        يدعم فقط Lua و Luau
-    </div>
-
-</div>
-
-<script>
-async function fetchScript(){
-
-    let url = document.getElementById("urlInput").value.trim();
-    const loading = document.getElementById("loading");
-    const resultBox = document.getElementById("resultBox");
-    const output = document.getElementById("output");
-
-    if(!url || (!url.includes("http") && !url.includes("raw"))){
-        alert("حط الرابط ي حب");
-        return;
-    }
-
-    loading.style.display = "block";
-    resultBox.style.display = "none";
-
-    try{
         
-        const finalUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+        <div class="input-group">
+            <input type="text" id="urlInput" placeholder="حط الرابط هنا...">
+        </div>
 
-        const response = await fetch(finalUrl);
-        if (!response.ok) throw new Error('Network error');
-        
-        const data = await response.json();
-        const text = data.contents; 
+        <button class="btn-action" id="actionBtn" onclick="processLink()">افتح وفك الرابط</button>
 
-        setTimeout(() => {
+        <div class="status-msg" id="statusMessage">انتظر شوي…</div>
 
-            output.value = text;
+        <div class="output-box" id="outputBox">
+            <div class="code-container">
+                <pre><code id="codeArea"></code></pre>
+            </div>
+            <button class="btn-copy" id="copyBtn" onclick="copyCode()">نسخ السكربت</button>
+        </div>
+    </div>
 
-            loading.style.display = "none";
-            resultBox.style.display = "block";
+    <script>
+        const urlInput = document.getElementById('urlInput');
+        const actionBtn = document.getElementById('actionBtn');
+        const statusMessage = document.getElementById('statusMessage');
+        const outputBox = document.getElementById('outputBox');
+        const codeArea = document.getElementById('codeArea');
+        const copyBtn = document.getElementById('copyBtn');
 
-        },2000);
+        function processLink() {
+            const urlValue = urlInput.value.trim();
 
-    }catch(err){
+            if (urlValue === "") {
+                return;
+            }
 
-        loading.style.display = "none";
+            outputBox.classList.remove('show');
+            setTimeout(() => { outputBox.style.display = 'none'; }, 500);
+            
+            statusMessage.style.color = '#ff4fa8';
+            statusMessage.innerText = "انتظر شوي…";
+            statusMessage.style.display = "block";
 
-        alert("صار خطأ بالرابط");
+            setTimeout(() => {
+                const isRaw = urlValue.includes('raw') || urlValue.includes('pastebin.com/raw') || urlValue.includes('githubusercontent.com');
+                
+                if (!isRaw) {
+                    showError();
+                    return;
+                }
 
-    }
+                fetch(urlValue)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network error');
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        const cleanData = data.trim();
+                        if (cleanData === "" || (!cleanData.includes('function') && !cleanData.includes('local') && !cleanData.includes('end') && !cleanData.includes('print'))) {
+                            showError();
+                        } else {
+                            statusMessage.style.display = "none";
+                            codeArea.innerText = cleanData;
+                            outputBox.style.display = 'block';
+                            setTimeout(() => {
+                                outputBox.classList.add('show');
+                            }, 50);
+                        }
+                    })
+                    .catch(() => {
+                        showError();
+                    });
 
-}
+            }, 1200);
+        }
 
-function copyText(){
+        function showError() {
+            statusMessage.style.color = '#ff003c';
+            statusMessage.innerText = "Error : 404";
+            
+            setTimeout(() => {
+                statusMessage.style.display = "none";
+                urlInput.value = "";
+            }, 2500);
+        }
 
-    const output = document.getElementById("output");
+        function copyCode() {
+            const textToCopy = codeArea.innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = copyBtn.innerText;
+                copyBtn.innerText = "تم النسخ الرابط";
+                setTimeout(() => {
+                    copyBtn.innerText = originalText;
+                }, 2000);
+            });
+        }
 
-    output.select();
-    output.setSelectionRange(0,99999);
+        function climbDown() {
+            if (outputBox.style.display === 'block' || outputBox.classList.contains('show')) {
+                copyBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
 
-    navigator.clipboard.writeText(output.value);
-
-    alert("تم نسخ السكربت");
-
-}
-</script>
-
+        function climbUp() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
