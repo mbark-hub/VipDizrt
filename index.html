@@ -374,52 +374,6 @@
             box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6);
         }
 
-        .ladder-control {
-            position: fixed;
-            left: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            background: rgba(20, 5, 30, 0.8);
-            border: 2px solid #6a0dad;
-            padding: 10px 5px;
-            box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
-            z-index: 999;
-        }
-
-        .ladder-step {
-            width: 24px;
-            height: 4px;
-            background: linear-gradient(90deg, #6a0dad, #ff007f);
-            border-radius: 2px;
-        }
-
-        .ladder-btn {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(45deg, #6a0dad, #d1006c);
-            border: none;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .ladder-btn:hover {
-            background: linear-gradient(45deg, #ff007f, #6a0dad);
-            box-shadow: 0 0 10px #ff007f;
-        }
-
-        .ladder-btn.up-btn { margin-bottom: 5px; }
-        .ladder-btn.down-btn { margin-top: 5px; }
-
         @media (max-width: 768px) {
             #home-page {
                 grid-template-columns: 1fr;
@@ -531,18 +485,6 @@
 </section>
 
 <section id="decode-page">
-
-    <div class="ladder-control">
-        <button class="ladder-btn up-btn" onclick="climbUp()">▲</button>
-
-        <div class="ladder-step"></div>
-        <div class="ladder-step"></div>
-        <div class="ladder-step"></div>
-        <div class="ladder-step"></div>
-        <div class="ladder-step"></div>
-
-        <button class="ladder-btn down-btn" onclick="climbDown()">▼</button>
-    </div>
 
     <div class="main-container">
 
@@ -767,31 +709,6 @@ function copyCode() {
 
         }, 2000);
 
-    });
-
-}
-
-function climbDown() {
-
-    if (
-        outputBox.style.display === 'block' ||
-        outputBox.classList.contains('show')
-    ) {
-
-        copyBtn.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
-
-    }
-
-}
-
-function climbUp() {
-
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
     });
 
 }
